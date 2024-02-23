@@ -1,11 +1,13 @@
-chrome.tabs.onUdated.addListener((tabId, tab) =>{
-    if(tab.url && tab.url.includes("youtube.com/watch")) {
-        const queryParameters = tab.url.split("?")[1];
-        const urlParameters = new URLSearchParams(queryParameters);
+(() => {
+    let youtubeLeftControls, youtubePlayer;
+    let currentVideo = "";
 
-        chrome.tabs.sendMessage(tabId, {
-            type: "NEW",
-            videoId: urlParameters.get("v")
-        });
-    }
-});
+    chrome.runtime.onMessage.addListener((obj, sender, response) => {
+        const {type, value, videoId} = obj;
+
+        if (type === "NEW") {
+            currentVideo = videoId;
+            newVideoLoaded();
+        }
+    });
+})();
