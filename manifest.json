@@ -1,0 +1,16 @@
+{
+    "name" : "YT Google Extension",
+    "version": "0.1.0",
+    "description": "Video timestamps",
+    "permissions": ["storage", "tabs"],
+    "host_permissions": ["https://*.youtube.com/*"],
+    
+
+
+
+
+
+
+
+
+}
